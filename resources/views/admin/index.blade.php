@@ -24,8 +24,8 @@
         <td>{{ $page->slug }}</td> 
         <td>{{ $page->category['title'] }}</td>
         <td>{{ $page->subcategory['title'] }}</td>
-        <td><a href="{{route('admin.show', $page->id)}}">{!! FA::fixedWidth('list') !!} View</a></td>
-        <td><a href="{{route('admin.edit', $page->id)}}">{!! FA::fixedWidth('pencil') !!} Update</a></td>
+        <td><a href="{{route('admin.show', $page->slug)}}">{!! FA::fixedWidth('list') !!} View</a></td>
+        <td><a href="{{route('admin.edit', $page->slug)}}">{!! FA::fixedWidth('pencil') !!} Update</a></td>
         <td><a href="#">{!! FA::fixedWidth('trash-o') !!}Delete</a></td>
     </tr>
     @endforeach
