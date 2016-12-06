@@ -31,9 +31,10 @@ class PostsController extends CrudController {
 
         $this->grid->add('code', 'Code');
         $this->addStylesToGrid();
+        $posts= Posts::all();
 
-        return $this->returnView();
-//        return view('index')->with('posts', $posts);
+//        return $this->returnView();
+        return view('admin.index')->with('posts', $posts);
     }
 
     public function edit($entity) {
@@ -47,11 +48,17 @@ class PostsController extends CrudController {
 
         $this->edit->add('title', 'Name', 'text');
 
-        $this->edit->add('code', 'Code', 'text')->rule('required');
 
 
 
         return $this->returnEditView();
+    }
+    public function show($slug){
+        
+        //fetch from DB based on slug
+        $post= Posts::where('slug','=',$slug)->first();
+        //return he view and pass in the post object
+        return view('admin.show')->with('post',$post);
     }
 
 }

@@ -1,7 +1,7 @@
 @extends('panelViews::mainTemplate')
 @section('page-wrapper')
 
-<h1>sss</h1>
+<h1>View all pages from the site</h1>
 <table id='withoutMargins' class='table'>
     <thead >
     <th>#</th>
@@ -24,7 +24,7 @@
         <td>{{ $page->slug }}</td> 
         <td>{{ $page->category['title'] }}</td>
         <td>{{ $page->subcategory['title'] }}</td>
-        <td><a href="#">{!! FA::fixedWidth('list') !!} View</a></td>
+        <td><a href="{{route('admin.show', $page->slug)}}">{!! FA::fixedWidth('list') !!} View</a></td>
         <td><a href="#">{!! FA::fixedWidth('pencil') !!} Update</a></td>
         <td><a href="#">{!! FA::fixedWidth('trash-o') !!}Delete</a></td>
     </tr>

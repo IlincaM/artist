@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/panel/Posts/all','PostsController@all');
+Route::get('/panel/Posts/view/{slug}',['as' =>'admin.show','uses' =>'PostsController@show','[\w\d\-\_]+']);
+
 //Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
 //    var_dump($query->sql);
 //    var_dump($query->bindings);
