@@ -26,8 +26,8 @@ class PostsController extends CrudController {
 
         $this->grid->add('title', 'Name');
         $this->grid->add('body', 'Subtitlu');
-        $this->grid->add("category", 'Categorie');
-        $this->grid->add('subcategory', 'Subcategory');
+        $this->grid->add("category.title", 'Categorie');
+        $this->grid->add('subcategory.title', 'Subcategory');
 
         $this->grid->add('code', 'Code');
         $this->addStylesToGrid();
