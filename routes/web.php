@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/panel/Posts/all','PostsController@all');
-Route::get('/panel/Posts/view/{slug}',['as' =>'admin.show','uses' =>'PostsController@show','[\w\d\-\_]+']);
+Route::get('/panel/Posts/view/{id}',['as' =>'admin.show','uses' =>'PostsController@show']);//,'[\w\d\-\_]+']);
+Route::get('/panel/Posts/edit/{id}',['as' =>'admin.edit','uses' =>'PostsController@edit']);
+Route::put('/panel/Posts/update/{id}',['as' =>'admin.update','uses' =>'PostsController@update']);
 
 //Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
 //    var_dump($query->sql);

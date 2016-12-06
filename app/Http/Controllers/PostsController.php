@@ -31,34 +31,29 @@ class PostsController extends CrudController {
 
         $this->grid->add('code', 'Code');
         $this->addStylesToGrid();
-        $posts= Posts::all();
+        $posts = Posts::all();
 
 //        return $this->returnView();
         return view('admin.index')->with('posts', $posts);
     }
 
-    public function edit($entity) {
+    public function show($id) {
 
-        parent::edit($entity);
-
-
-        $this->edit = \DataEdit::source(new \App\Posts());
-
-        $this->edit->label('Edit Category');
-
-        $this->edit->add('title', 'Name', 'text');
-
-
-
-
-        return $this->returnEditView();
-    }
-    public function show($slug){
-        
         //fetch from DB based on slug
-        $post= Posts::where('slug','=',$slug)->first();
+        $posts = Posts::find($id);
         //return he view and pass in the post object
-        return view('admin.show')->with('post',$post);
+        return view('admin.show')->with('posts', $posts);
+    }
+
+    public function edit($id) {
+        //find the post in the db and save as a var
+        $posts = Posts::find($id);        //return the view
+        
+        return view('admin.edit')->withPosts($posts);
+    }
+
+    public function update() {
+        
     }
 
 }
