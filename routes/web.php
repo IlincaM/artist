@@ -26,5 +26,5 @@ Route::group(array('prefix' => 'panel', 'middleware' => ['web', 'PanelAuth']), f
     Route::get('/Page/view/{slug}', ['as' => 'admin.show', 'uses' => 'PostsController@show', '[\w\d\-\_]+']);
     Route::get('/panel/Page/edit/{slug}', ['as' => 'admin.edit', 'uses' => 'PostsController@edit']);
     Route::put('/panel/Page/update/{id}', ['as' => 'admin.update', 'uses' => 'PostsController@update']);
-    Route::post('delete','PostsController@delete');
+    Route::delete('delete','PostsController@delete');
 });

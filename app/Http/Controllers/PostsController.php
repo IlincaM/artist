@@ -63,10 +63,11 @@ class PostsController extends Controller {
         //redirect with flash data to posts.show
         return redirect()->route('admin.show', $post->slug);
     }
-    public function delete(Request $request) {
-        $id=$request->id;
+    public function delete($id) {
        
-      Posts::where('id',$id)->delete();
+        
+     $post= Posts::find($id)  ;
+       $post->delete();
        
         return response()->json();
     }
