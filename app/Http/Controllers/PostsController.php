@@ -9,31 +9,16 @@ use App\Posts;
 use App\Category;
 use Illuminate\Http\Request;
 use Session;
-class PostsController extends CrudController {
+use App\Http\Controllers;
+use  ValidatesRequests;
 
-    public function all($entity) {
-        parent::all($entity);
+class PostsController extends Controller {
+ 
+    public function all() {
+        
 
-
-
-        $this->filter = \DataFilter::source(new \App\Posts());
-        $this->filter->add('title', 'Name', 'text');
-        $this->filter->submit('search');
-        $this->filter->reset('reset');
-        $this->filter->build();
-
-        $this->grid = \DataGrid::source(Posts::with('category', 'subcategory'));
-
-        $this->grid->add('title', 'Name');
-        $this->grid->add('body', 'Subtitlu');
-        $this->grid->add("category.title", 'Categorie');
-        $this->grid->add('subcategory.title', 'Subcategory');
-
-        $this->grid->add('code', 'Code');
-        $this->addStylesToGrid();
         $posts = Posts::all();
 
-//        return $this->returnView();
         return view('admin.index')->with('posts', $posts);
     }
 
@@ -76,8 +61,14 @@ class PostsController extends CrudController {
         //set flash data with success msg
         Session::flash('success', 'This article was succesfully saved.');
         //redirect with flash data to posts.show
-        return redirect()->route('admin.show', $post->id);
+        return redirect()->route('admin.show', $post->slug);
     }
-
+    public function delete(Request $request) {
+        $id=$request->id;
+       
+      Posts::where('id',$id)->delete();
+       
+        return response()->json();
+    }
 
 }

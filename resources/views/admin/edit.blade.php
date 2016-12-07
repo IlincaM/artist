@@ -28,7 +28,7 @@
 </div>-->
 <div class="row">
     <!--Open a form and tell Laravel to conected it to the model-->
-    {!! Form::model($post,['route' => ['admin.update',$post->slug],'method' => 'PUT']) !!}
+    {!! Form::model($post,['route' => ['admin.update',$post->id],'method' => 'PUT']) !!}
     <div class="col-md-8">
         {{Form::label('title','Title:')}}
         {{Form::text('title',null,['class' =>'form-control input-lg'])}}
