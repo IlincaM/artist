@@ -7,6 +7,9 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ URL::asset('js/ajax.js') }}"></script>
+{!!Html::style('js/jquery-alertable-master/jquery.alertable.css')!!}
+{!!Html::script('js/jquery-alertable-master/jquery.alertable.js')!!}
+<script type="text/javascript" src="{{ URL::asset('js/jquery-alertable-master/jquery.alertable.js') }}"></script>
 
 
 <h1>View all pages from the site</h1>
@@ -36,60 +39,43 @@
         <td>{{ $page->subcategory['title'] }}</td>
         <td><a href="{{route('admin.show', $page->slug)}}">{!! FA::fixedWidth('list') !!} View</a></td>
         <td><a href="{{route('admin.edit', $page->slug)}}">{!! FA::fixedWidth('pencil') !!} Update</a></td>
-<!--        <td><a href="#">{!! FA::fixedWidth('trash-o') !!}Delete</a></td>-->
         <td>
-
-            <button class="delete-modal btn btn-danger" data-id="{{$page->id}}" data-title="{{$page->title}}" data-description="{{$page->description}}">
-                <span class="glyphicon glyphicon-trash"></span> Delete
-            </button>
+            <a href="#" onClick="Delete('{{$page->id}}','{{$page->title}}')">{!! FA::fixedWidth('trash-o') !!}Delete</a>
         </td>
     </tr>
     @endforeach
 </tbody>
 </table>
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="id">id :</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="fid" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="title">Title:</label>
-                        <div class="col-sm-10">
-                            <input type="name" class="form-control" id="t">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="description">Description:</label>
-                        <div class="col-sm-10">
-                            <input type="name" class="form-control" id="d">
-                        </div>
-                    </div>
-                </form>
-                <div class="deleteContent">
-                    Are you Sure you want to delete <span class="title"></span> ?
-                    <span class="hidden id"></span>
-                </div>
-                <div class="modal-footer">
-                    <button method="delete" type="button" class="btn actionBtn deleteB"  data-dismiss="modal">
-                        <span id="footer_action_button" class='glyphicon'> </span>
-                    </button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">
-                        <span class='glyphicon glyphicon-remove'></span> Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+ var Delete = function(id,page)
+{ 
+     // ALERT JQUERY
+    $.alertable.confirm('Are you sure you want to delete ' + page + ' ?').then(function() {
+  var route = "{{url('/panel/Page/delete')}}/"+id+"#";
+      var token = $("#token").val();
+      $.ajax({
+        url: route,
+        headers: {'X-CSRF-TOKEN': token},
+        type: 'post',
+        dataType: 'json',
+        
+        success:$( ".item"+id).remove()
+            
+           
+      });
+     
+  
+    });
+};
+
+
+
+
+</script>
 @stop
 

@@ -64,12 +64,20 @@ class PostsController extends Controller {
         return redirect()->route('admin.show', $post->slug);
     }
     public function delete($id) {
-       
-        
-     $post= Posts::find($id)  ;
-       $post->delete();
-       
-        return response()->json();
+       $page= Posts::find($id);
+       return view('admin.delete')->withPage($page);
     }
+public function destroy($id){
+    $page= Posts::FindorFail($id);
+    $result=$page->delete();
+    if($result){
+        return response()->json( );
+           
 
+    }
+    else {
+        return response()->json(['success' => 'false']);
+    }
+    
+    }
 }
