@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddTypeOfPageIdToPostsTable' => $baseDir . '/database/migrations/2016_12_09_113416_add_type-of-page_id_to_posts_table.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -73,6 +74,7 @@ return array(
     'CreatePostsTable' => $baseDir . '/database/migrations/2016_12_02_092401_create_posts_table.php',
     'CreateRolesTables' => $baseDir . '/database/migrations/2016_02_10_181651_create_roles_tables.php',
     'CreateSubcategoriesTable' => $baseDir . '/database/migrations/2016_12_02_092019_create_subcategories_table.php',
+    'CreateTypeOfPageTable' => $baseDir . '/database/migrations/2016_12_09_113045_create_type-of-page_table.php',
     'CreateUrlTable' => $baseDir . '/database/migrations/2015_02_20_130902_create_url_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

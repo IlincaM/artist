@@ -371,6 +371,7 @@ class ComposerStaticInit0e20dc4cd30b5862fe563e4072fccc15
     );
 
     public static $classMap = array (
+        'AddTypeOfPageIdToPostsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_09_113416_add_type-of-page_id_to_posts_table.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -438,6 +439,7 @@ class ComposerStaticInit0e20dc4cd30b5862fe563e4072fccc15
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_02_092401_create_posts_table.php',
         'CreateRolesTables' => __DIR__ . '/../..' . '/database/migrations/2016_02_10_181651_create_roles_tables.php',
         'CreateSubcategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_02_092019_create_subcategories_table.php',
+        'CreateTypeOfPageTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_09_113045_create_type-of-page_table.php',
         'CreateUrlTable' => __DIR__ . '/../..' . '/database/migrations/2015_02_20_130902_create_url_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

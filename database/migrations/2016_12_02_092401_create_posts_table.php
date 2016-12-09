@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration {
             $table->increments('id');
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('subcategory_id')->unsigned()->nullable();
+            $table->boolean('show_nav');
 
             $table->string('title');
             $table->string('body');
