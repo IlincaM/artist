@@ -4402,8 +4402,7 @@
             "phpunit",
             "testing",
             "xunit"
-        ]
-    },
+        ]    },
     {
         "name": "studio-42/elfinder",
         "version": "2.1.19",
@@ -4463,5 +4462,6 @@
         ],
         "description": "File manager for web",
         "homepage": "http://elfinder.org"
+
     }
 ]
