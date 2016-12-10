@@ -1,8 +1,8 @@
 @extends('panelViews::mainTemplate')
 @section('page-wrapper')
-<h1>{{$post->title}}</h1>
-<p>{{$post->body}}</p>
-<p>{{$post->dimension}}</p>
-<p>year: {{$post->year}}</p>
-<p>{{$post->img}}</p>
+<h1>{{$page->title}}</h1>
+<p>{{$page->body}}</p>
+<p>{{$page->dimension}}</p>
+<p>year: {{$page->year}}</p>
+<p>{{$page->img}}</p>
 @stop

@@ -22,10 +22,12 @@ Route::get('/', function () {
 //    var_dump($query->time);
 //});
 Route::group(array('prefix' => 'panel', 'middleware' => ['web', 'PanelAuth']), function() {
-//    Route::get('/Page/all', ['as' => 'admin.edit', 'uses' => 'PostsController@all']);
-    Route::get('/Page/view/{slug}', ['as' => 'admin.show', 'uses' => 'PostsController@show', '[\w\d\-\_]+']);
-    Route::get('/panel/Page/edit/{slug}', ['as' => 'admin.edit', 'uses' => 'PostsController@edit']);
-    Route::put('/panel/Page/update/{id}', ['as' => 'admin.update', 'uses' => 'PostsController@update']);
-    Route::post('/Page/delete/{id}', ['as' => 'admin.destroy', 'uses' => 'PostsController@destroy']);
+    Route::get('Pages/all', 'PagesController@all');
+    Route::get('/Pages/view/{slug}', ['as' => 'admin.show', 'uses' => 'PagesController@show', '[\w\d\-\_]+']);
+    Route::get('/Pages/edit/{slug}', ['as' => 'admin.edit', 'uses' => 'PagesController@getEdit']);
+    Route::put('/Pages/update/{id}', ['as' => 'admin.update', 'uses' => 'PagesController@update']);
+
+    Route::post('/Pages/all/{id}', ['as' => 'admin.destroy', 'uses' => 'PagesController@destroy']);
+
 
 });

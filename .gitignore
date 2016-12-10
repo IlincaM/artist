@@ -1,2 +1,7 @@
 /artist/node_modules/
 /artist/vendor/
+/artist/nbproject/
+*.node_modules
+*.vendor
+*.nbproject
+

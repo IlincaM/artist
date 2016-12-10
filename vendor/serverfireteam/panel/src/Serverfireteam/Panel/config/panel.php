@@ -7,6 +7,7 @@
  */
 return array(
 
+  'controllers' => 'App\Http\Controllers',
 
   
     'panelControllers' => array(

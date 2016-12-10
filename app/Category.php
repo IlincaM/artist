@@ -10,6 +10,6 @@ class Category extends Model {
 	
     protected $table = 'categories';
     public function posts() {
-        return $this->hasMany('App\Posts','category_id');
+        return $this->hasMany('App\Pages','category_id');
     }
 }

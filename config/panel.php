@@ -11,7 +11,8 @@ return array(
        'Admin',
        'Permission',  
        'Role',  
-       'Link'
+       'Link',
+        
     ),
     'logo'=>'packages/serverfireteam/panel/img/logo.png' // logo of Panel 
     

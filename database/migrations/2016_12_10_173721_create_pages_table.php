@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration {
+class CreatePagesTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreatePostsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('subcategory_id')->unsigned()->nullable();
+            $table->integer('type-page_id')->unsigned();
+
             $table->boolean('show_nav');
 
             $table->string('title');
@@ -32,11 +34,14 @@ class CreatePostsTable extends Migration {
             $table->timestamps();
         });
 
-        Schema::table('posts', function($table) {
+        Schema::table('pages', function($table) {
             $table->foreign('category_id')->references('id')->on('categories');
         });
-        Schema::table('posts', function($table) {
+        Schema::table('pages', function($table) {
             $table->foreign('subcategory_id')->references('id')->on('subcategories');
+        });
+        Schema::table('pages', function($table) {
+            $table->foreign('type-page_id')->references('id')->on('type-page');
         });
     }
 
@@ -46,7 +51,7 @@ class CreatePostsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('pages');
     }
 
 }

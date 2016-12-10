@@ -28,7 +28,7 @@
 {{ csrf_field() }}
 
 <tbody >
-    @foreach($posts as $page)
+    @foreach($pages as $page)
 
     <tr class="item{{$page->id}}">
         <th>{{ $page->id }}</th>        
@@ -49,30 +49,26 @@
 <script>
     $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
-});
- var Delete = function(id,page)
-{ 
-     // ALERT JQUERY
-    $.alertable.confirm('Are you sure you want to delete ' + page + ' ?').then(function() {
-  var route = "{{url('/panel/Page/delete')}}/"+id+"#";
-      var token = $("#token").val();
-      $.ajax({
-        url: route,
-        headers: {'X-CSRF-TOKEN': token},
-        type: 'post',
-        dataType: 'json',
-        
-        success:$( ".item"+id).remove()
-            
-           
-      });
-     
-  
     });
-};
+    var Delete = function(id, page)
+            {
+            // ALERT JQUERY
+            $.alertable.confirm('Are you sure you want to delete ' + page + ' ?').then(function() {
+            var route = "{{url('panel/Pages/all')}}/" + id + "#";
+            var token = $("#token").val();
+            $.ajax({
+            url: route,
+                    headers: {'X-CSRF-TOKEN': token},
+                    type: 'post',
+                    dataType: 'json',
+                    success:$(".item" + id).remove()
 
+
+            });
+            });
+            };
 
 
 
