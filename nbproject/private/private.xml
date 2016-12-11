@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
+            <file>file:/C:/xampp/htdocs/artist/resources/views/admin/create.blade.php</file>
             <file>file:/C:/xampp/htdocs/artist/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/artist/resources/views/admin/index.blade.php</file>
-            <file>file:/C:/xampp/htdocs/artist/app/Http/Controllers/PostsController.php</file>
+            <file>file:/C:/xampp/htdocs/artist/resources/views/admin/edit.blade.php</file>
             <file>file:/C:/xampp/htdocs/artist/public/js/ajax.js</file>
-
-            <file>file:/C:/xampp/htdocs/artist/database/migrations/2016_11_30_160615_create_categories_table.php</file>
-            <file>file:/C:/xampp/htdocs/artist/database/migrations/2016_12_09_090402_add_type_to_posts_table.php</file>
-            <file>file:/C:/xampp/htdocs/artist/database/migrations/2016_12_02_092401_create_posts_table.php</file>
-
+            <file>file:/C:/xampp/htdocs/artist/app/Http/Controllers/PagesController.php</file>
         </group>
     </open-files>
 </project-private>

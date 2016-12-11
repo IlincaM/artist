@@ -18,5 +18,7 @@ class Pages extends Model {
     public function subcategory() {
         return $this->belongsTo('App\Subcategory', 'subcategory_id');
     }
-
+public function typePage() {
+        return $this->belongsTo('App\TypePage', 'type-page_id');
+    }
 }
