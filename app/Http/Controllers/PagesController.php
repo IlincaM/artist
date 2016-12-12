@@ -109,26 +109,45 @@ class PagesController extends Controller {
      */
     public function edit() {
         $types = TypePage::all();
-        return view('admin.create')->withTypes($types);
+        $page= Pages::all();
+        return view('admin.create')->withTypes($types)->withPage($page);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function store(CreatePageRequest $request, Pages $page) {
-        var_dump(CreatePageRequest);die();
-        return request()->all();
+    public function store() {
+        // validate
+        $rules = array(
+            'title' => 'required|max:255',
+            'body' => 'required',
+            'slug' => 'required|alpha_dash|min:3|max:255|unique:pages,slug'
+        );
+        $validator = Validator::make(Input::all(), $rules);
 
-//store in the database
-       
-    $page->create($request->all());
+        // process the login
+        if ($validator->fails()) {
+            return redirect()->route('admin.create')
+                            ->withErrors($validator);
+        } else {
+            // store
+            $page = new Pages();
+            $page->title = Input::get('title');
+            $page->body = Input::get('body');
+            $page->slug = Input::get('slug');
+            $page->slug = Input::get('slug');
+            $page->show_nav = Input::get('show_nav');
+            $page->type_id = Input::get('type_id');
 
 
-//redirect
-        return redirect()->route('admin.show', $page->slug);
+            $page->save();
+
+            // redirect
+            Session::flash('success', 'Successfully created page!');
+            return redirect()->route('admin.show', $page->slug);
+        }
     }
 
 }
