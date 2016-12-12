@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-
 use App\Http\Controllers\Controller;
-use \Serverfireteam\Panel\CrudController;
 use App\Pages;
 use App\TypePage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
+use Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\CreatePageRequest;
 
 class PagesController extends Controller {
 
@@ -68,7 +69,7 @@ class PagesController extends Controller {
         } else {
             $this->validate($request, array(
                 'title' => 'required|max:255',
-                'slug' => 'required|alpha_dash|min:3|max:255|unique:posts,slug',
+                'slug' => 'required|alpha_dash|min:3|max:255|unique:pages,slug',
                 'body' => 'required'
             ));
         }
@@ -100,44 +101,34 @@ class PagesController extends Controller {
             return response()->json(['success' => 'false']);
         }
     }
-/**
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function edit() {
-        $types= TypePage::all();
-     return view('admin.create')->withTypes($types);
+        $types = TypePage::all();
+        return view('admin.create')->withTypes($types);
     }
-    
-      /**
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-public function store(Request $request) {
-        //validate the data
-        $this->validate($request, array(
-            'title' => 'required|max:255',
-            'slug' => 'required|alpha_dash|min:3|max:255|unique:pages,slug',
-            'body' => 'required'
-            
-        ));
-        //store in the database
-        $post = new Pages;
-        $post->title = $request->title;
-        $post->slug = $request->slug;
-        $post->body = $request->body;
+    public function store(CreatePageRequest $request, Pages $page) {
+        var_dump(CreatePageRequest);die();
+        return request()->all();
 
-        $post->save();
+//store in the database
+       
+    $page->create($request->all());
 
-        
 
-        Session::flash('success', 'The artice was successfully save');
-
-        //redirect to another page
-        return redirect()->route('admin.show', $post->id);
+//redirect
+        return redirect()->route('admin.show', $page->slug);
     }
 
 }

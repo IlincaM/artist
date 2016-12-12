@@ -28,8 +28,8 @@ Route::group(array('prefix' => 'panel', 'middleware' => ['web', 'PanelAuth']), f
     Route::put('/Pages/update/{id}', ['as' => 'admin.update', 'uses' => 'PagesController@update']);
 
     Route::post('/Pages/all/{id}', ['as' => 'admin.destroy', 'uses' => 'PagesController@destroy']);
-    Route::get('Pages/edit', 'PagesController@edit');
-    Route::post('/Pages/store', ['as' => 'admin.store', 'uses' => 'PagesController@store']);
+    Route::get('Pages/edit', ['as' => 'admin.create', 'uses' => 'PagesController@edit']);
+    Route::post('Pages/store', ['as' => 'admin.store', 'uses' => 'PagesController@store']);
 
 
 });

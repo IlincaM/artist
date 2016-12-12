@@ -16,7 +16,7 @@ class CreatePagesTable extends Migration {
             $table->increments('id');
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('subcategory_id')->unsigned()->nullable();
-            $table->integer('type-page_id')->unsigned();
+            $table->integer('type_id')->unsigned();
 
             $table->boolean('show_nav');
 
@@ -41,7 +41,7 @@ class CreatePagesTable extends Migration {
             $table->foreign('subcategory_id')->references('id')->on('subcategories');
         });
         Schema::table('pages', function($table) {
-            $table->foreign('type-page_id')->references('id')->on('type-page');
+            $table->foreign('type_id')->references('id')->on('type-page');
         });
     }
 

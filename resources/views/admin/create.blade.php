@@ -6,7 +6,8 @@
     <div >
         <h1>Create new page</h1>
         <hr>
-        {!! Form::open(array('route' => 'admin.store','data-parsley-validate' => '','files'=>true))!!}
+      {!! Form::open(['route' => ['admin.store'],'method' => 'POST','data-parsley-validate' => '','files'=>true]) !!}
+
         {{Form::label('title','Title:',['class' => 'labelColor'])}}
         {{Form::text('title', null,array('class' => 'form-control', 'required' => '','maxlenght' => '255')) }}
         {{Form::label('slug','Slug:',['class' => 'labelColor'])}}
@@ -29,8 +30,9 @@
         <div id="simpleOption" class="field">
             {{Form::label('body','Body:',['class' => 'labelColor'])}}
             {{Form::textarea('body',null,array('class' => 'form-control','required' => ''))}}
-            {{Form::hidden('show-nav',0)}}
-            {{Form::checkbox('show-nav',1)}}
+            {{Form::hidden('show_nav',0)}}
+            {{Form::checkbox('show_nav',1)}}
+            {{ Form::hidden('type_id', 2) }}
 
         </div>
                 {{Form::submit('Create New Page',array('class' => 'btn btn-block'))}}
