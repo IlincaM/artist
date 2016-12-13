@@ -10,6 +10,13 @@ class Pages extends Model {
     use ObservantTrait;
 
     protected $table = 'pages';
+     protected $fillable = [
+        'id',
+        'title',
+        'body',
+         'slug',
+      
+    ];
 
     public function category() {
         return $this->belongsTo('App\Category', 'category_id');

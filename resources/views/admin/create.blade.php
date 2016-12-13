@@ -24,30 +24,49 @@
             } 
             @endforeach
         </select>
-        <!--This should appear if the page is an Art Page (option 1 in the select box)-->
+        <!--This should appear if the page is an Piece of art (option 1 in the select box)-->
 
         <div id="artOption" class="field">
-            {{Form::label('body','Body:')}}
-            {{Form::textarea('body',null,array('class' => 'form-control','required' => ''))}}
-            {{Form::label('category','Select the project:')}}
-        {{Form::text('category', null,array('class' => 'form-control', 'required' => '','maxlenght' => '255')) }}
-<?php var_dump('<pre>',$page); ?>
+            {{Form::label('bodyArt','Body:')}}
+            {{Form::textarea('bodyArt',null,array('class' => 'form-control'))}}
+            {{Form::label('category_id','Select the project:')}}
+           
+            <select name="category_id"  id="category_id" > 
+                <option disabled selected value >Please select</option>  
+                @foreach ($categories as $key => $value) { 
 
+                <option value="<?php echo $value['id']; ?>"><?php echo $value['title']; ?></option> 
+                } 
+                @endforeach
+            </select>
+           
+            
+            <div id="galeriaArtistului" class="fields">
+                <p>galeria artistului</p>
+            </div>
+           
+            <div id="fotografie" class="fields">
+                <p>fotografie</p>
+            </div>
+           
+            <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
+            
+            
             {{Form::hidden('show_nav',0)}}
             {{Form::label('show_nav','Show in the menu:')}}
 
             {{Form::checkbox('show_nav',1)}}
-            {{ Form::hidden('type_id', 1) }}       
+            {{ Form::hidden('type_id',null ,array('class' => 'invisible')) }}       
         </div>
         <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
         <div id="simpleOption" class="field">
             {{Form::label('body','Body:')}}
-            {{Form::textarea('body',null,array('class' => 'form-control','required' => ''))}}
+            {{Form::textarea('body',null,array('class' => 'form-control'))}}
             {{Form::hidden('show_nav',0)}}
             {{Form::label('show_nav','Show in the menu:')}}
 
             {{Form::checkbox('show_nav',1)}}
-            {{ Form::hidden('type_id', 2) }}
+            {{ Form::hidden('type_id',null, array('class' => 'invisible')) }}
 
         </div>
         {{Form::submit('Create New Page',array('class' => 'btn btn-block'))}}

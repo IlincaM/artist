@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CreatePageRequest' => $baseDir . '/app/Http/Requests/CreatePageRequest.php',
+    'App\\Http\\Requests\\Request' => $baseDir . '/app/Http/Requests/Request.php',
     'App\\Observers\\CategoryObserver' => $baseDir . '/app/Observers/CategoryObserver.php',
     'App\\Observers\\PagesObserver' => $baseDir . '/app/Observers/PagesObserver.php',
     'App\\Observers\\PostsObserver' => $baseDir . '/app/Observers/PostsObserver.php',

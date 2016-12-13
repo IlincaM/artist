@@ -387,6 +387,7 @@ class ComposerStaticInit0e20dc4cd30b5862fe563e4072fccc15
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CreatePageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CreatePageRequest.php',
+        'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
         'App\\Observers\\CategoryObserver' => __DIR__ . '/../..' . '/app/Observers/CategoryObserver.php',
         'App\\Observers\\PagesObserver' => __DIR__ . '/../..' . '/app/Observers/PagesObserver.php',
         'App\\Observers\\PostsObserver' => __DIR__ . '/../..' . '/app/Observers/PostsObserver.php',

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Pages;
 use App\TypePage;
+use App\Category;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Validator;
@@ -109,8 +110,9 @@ class PagesController extends Controller {
      */
     public function edit() {
         $types = TypePage::all();
-        $page= Pages::all();
-        return view('admin.create')->withTypes($types)->withPage($page);
+        $page = Pages::all();
+        $categories = Category::all();
+        return view('admin.create')->withTypes($types)->withPage($page)->withCategories($categories);
     }
 
     /**
@@ -122,8 +124,7 @@ class PagesController extends Controller {
         // validate
         $rules = array(
             'title' => 'required|max:255',
-            'body' => 'required',
-            'slug' => 'required|alpha_dash|min:3|max:255|unique:pages,slug'
+            'slug' => 'required|alpha_dash|min:3|max:255|unique:pages,slug',
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -135,14 +136,40 @@ class PagesController extends Controller {
             // store
             $page = new Pages();
             $page->title = Input::get('title');
-            $page->body = Input::get('body');
             $page->slug = Input::get('slug');
-            $page->slug = Input::get('slug');
-            $page->show_nav = Input::get('show_nav');
             $page->type_id = Input::get('type_id');
+
+            if ($page->type_id == 1) {
+                $rules = array(
+                    'bodyArt' => 'required|max:255',
+                );
+                $validator = Validator::make(Input::all(), $rules);
+                if ($validator->fails()) {
+                    return redirect()->route('admin.create')
+                                    ->withErrors($validator);
+                } else {
+                    $page->body = Input::get('bodyArt');
+                }
+            }
+            if ($page->type_id == 2) {
+                $rules = array(
+                    'body' => 'required|max:255',
+                );
+                $validator = Validator::make(Input::all(), $rules);
+                if ($validator->fails()) {
+                    return redirect()->route('admin.create')
+                                    ->withErrors($validator);
+                } else {
+                    $page->body = Input::get('body');
+                }
+            }
+
+
+            $page->show_nav = Input::get('show_nav');
 
 
             $page->save();
+
 
             // redirect
             Session::flash('success', 'Successfully created page!');
