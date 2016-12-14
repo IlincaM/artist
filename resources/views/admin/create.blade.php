@@ -16,7 +16,7 @@
         {{Form::text('slug',null,array('class' => 'form-control','required' => '','minlength'=>'3','maxlength'=>'255'))}}
         {{Form::label('type-page_id','Type of the page:')}}
 
-        <select name="type-page_id"  id="type-page_id" > 
+        <select name="type_of_the_page"  id="type_of_the_page" > 
             <option disabled selected value >Please select</option>  
             @foreach ($types as $key => $value) { 
 
@@ -24,13 +24,14 @@
             } 
             @endforeach
         </select>
+
         <!--This should appear if the page is an Piece of art (option 1 in the select box)-->
 
         <div id="artOption" class="field">
             {{Form::label('bodyArt','Body:')}}
             {{Form::textarea('bodyArt',null,array('class' => 'form-control'))}}
             {{Form::label('project','Select the project:')}}
-            <select id='project' name="project" data-placeholder="Select " style="width:350px;" class="chosen-select" tabindex="5">
+            <div> <select id='project' name="project" data-placeholder="Select " style="width:350px;" class="chosen-select" tabindex="5">
                 <option value=""></option>
                 @foreach ($categories as $categorie)
 
@@ -46,9 +47,13 @@
 
                 </optgroup>
 
-            </select>
+            </select></div> 
             {{ Form::hidden('category_id',null, array('class' => 'invisibleId')) }}
             {{ Form::hidden('subcategory_id',null, array('class' => 'invisibleSubcategoryId')) }}
+            {{Form::label('year','Year:')}}
+            {{Form::text('year',null,array('class' => 'form-control'))}}
+            {{Form::label('dimension','Dimension:')}}
+            {{Form::text('dimension',null,array('class' => 'form-control'))}}
 
             <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
 
@@ -60,7 +65,7 @@
             </div>
             {{ Form::hidden('type_id',null ,array('class' => 'invisible')) }}       
         </div>
-       
+
         <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
         <div id="simpleOption" class="field">
             {{Form::label('body','Body:')}}

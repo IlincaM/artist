@@ -125,6 +125,7 @@ class PagesController extends Controller {
         $rules = array(
             'title' => 'required|max:255',
             'slug' => 'required|alpha_dash|min:3|max:255|unique:pages,slug',
+            'type_of_the_page' => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -142,6 +143,9 @@ class PagesController extends Controller {
             if ($page->type_id == 1) {
                 $rules = array(
                     'bodyArt' => 'required|max:255',
+                    'project' => 'required',
+                    'year' => 'required|numeric',
+                    'dimension' => 'required',
                 );
                 $validator = Validator::make(Input::all(), $rules);
                 if ($validator->fails()) {
@@ -151,6 +155,8 @@ class PagesController extends Controller {
                     $page->body = Input::get('bodyArt');
                     $page->category_id = Input::get('category_id');
                     $page->subcategory_id = Input::get('subcategory_id');
+                    $page->year = Input::get('year');
+                    $page->dimension = Input::get('dimension');
                 }
             }
             if ($page->type_id == 2) {
