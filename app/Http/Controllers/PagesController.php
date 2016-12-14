@@ -111,7 +111,7 @@ class PagesController extends Controller {
     public function edit() {
         $types = TypePage::all();
         $page = Pages::all();
-        $categories = Category::all();
+        $categories = Category::with('subcategories')->get();
         return view('admin.create')->withTypes($types)->withPage($page)->withCategories($categories);
     }
 
@@ -149,6 +149,8 @@ class PagesController extends Controller {
                                     ->withErrors($validator);
                 } else {
                     $page->body = Input::get('bodyArt');
+                    $page->category_id = Input::get('category_id');
+                    $page->subcategory_id = Input::get('subcategory_id');
                 }
             }
             if ($page->type_id == 2) {

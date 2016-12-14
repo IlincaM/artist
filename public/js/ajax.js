@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('.field').hide();
- $('.fields').hide();
+    $('.fields').hide();
     $('#type-page_id').on('change', function () {
         var select = $("#type-page_id option:selected").val();
 
@@ -10,7 +10,7 @@ $(document).ready(function () {
             case "1":
                 $('.field').hide();
                 $('#artOption').show();
-               
+
                 $(".invisible").val(1);
 
                 break;
@@ -27,33 +27,15 @@ $(document).ready(function () {
 
         }
     });
-     $('#category_id').on('change', function () {
-        var select = $("#category_id option:selected").val();
+    $('#project').change(function ()
+{
+    //           ↓
+    var category_id=$('#project :selected').parent().attr('value');
+     $(".invisibleId").val(category_id);
+      var subcategory_id=$('#project :selected').attr('value');
+     $(".invisibleSubcategoryId").val(subcategory_id);
+});
 
-        switch (select) {
-            case '':
-                $('.fields').hide();
-            case "1":
-                $('.fields').hide();
-                $('#galeriaArtistului').show();
-               
-             
-
-                break;
-            case "2":
-                $('.fields').hide();
-                $('#fotografie').show();
-              
-
-                break;
-
-            default:
-                $('.fields').hide();
-
-
-        }
-    });
-    
 });
 
 

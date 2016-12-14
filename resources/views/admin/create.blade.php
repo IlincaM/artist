@@ -29,35 +29,38 @@
         <div id="artOption" class="field">
             {{Form::label('bodyArt','Body:')}}
             {{Form::textarea('bodyArt',null,array('class' => 'form-control'))}}
-            {{Form::label('category_id','Select the project:')}}
-           
-            <select name="category_id"  id="category_id" > 
-                <option disabled selected value >Please select</option>  
-                @foreach ($categories as $key => $value) { 
+            {{Form::label('project','Select the project:')}}
+            <select id='project' name="project" data-placeholder="Select " style="width:350px;" class="chosen-select" tabindex="5">
+                <option value=""></option>
+                @foreach ($categories as $categorie)
 
-                <option value="<?php echo $value['id']; ?>"><?php echo $value['title']; ?></option> 
-                } 
-                @endforeach
+                <optgroup value="{{$categorie->id}}" label="{{$categorie->title}}">' 
+
+                    @foreach ($categorie->subcategories as $subcategories)  
+
+                    <option value="{{$subcategories->id}}">{{$subcategories->title}}</option>
+
+                    @endforeach     
+
+                    @endforeach
+
+                </optgroup>
+
             </select>
-           
-            
-            <div id="galeriaArtistului" class="fields">
-                <p>galeria artistului</p>
-            </div>
-           
-            <div id="fotografie" class="fields">
-                <p>fotografie</p>
-            </div>
-           
-            <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
-            
-            
-            {{Form::hidden('show_nav',0)}}
-            {{Form::label('show_nav','Show in the menu:')}}
+            {{ Form::hidden('category_id',null, array('class' => 'invisibleId')) }}
+            {{ Form::hidden('subcategory_id',null, array('class' => 'invisibleSubcategoryId')) }}
 
-            {{Form::checkbox('show_nav',1)}}
+            <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
+
+
+            {{Form::hidden('show_nav',0)}}
+            <div> {{Form::label('show_nav','Show in the menu:')}}
+
+                {{Form::checkbox('show_nav',1)}}
+            </div>
             {{ Form::hidden('type_id',null ,array('class' => 'invisible')) }}       
         </div>
+       
         <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
         <div id="simpleOption" class="field">
             {{Form::label('body','Body:')}}

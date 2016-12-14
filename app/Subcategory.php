@@ -11,9 +11,12 @@ class Subcategory extends Model {
 
     protected $table = 'subcategories';
 
-    public function posts() {
+    public function pages() {
         return $this->hasMany('App\Pages', 'subcategory_id');
     }
 
+public function categories() {   
 
+        return $this->belongsTo('App\Category');
+    }
 }
