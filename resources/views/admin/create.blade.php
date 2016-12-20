@@ -32,29 +32,30 @@
             {{Form::textarea('bodyArt',null,array('class' => 'form-control'))}}
             {{Form::label('project','Select the project:')}}
             <div> <select id='project' name="project" data-placeholder="Select " style="width:350px;" class="chosen-select" tabindex="5">
-                <option value=""></option>
-                @foreach ($categories as $categorie)
+                    <option value=""></option>
+                    @foreach ($categories as $categorie)
 
-                <optgroup value="{{$categorie->id}}" label="{{$categorie->title}}">' 
+                    <optgroup value="{{$categorie->id}}" label="{{$categorie->title}}">' 
 
-                    @foreach ($categorie->subcategories as $subcategories)  
+                        @foreach ($categorie->subcategories as $subcategories)  
 
-                    <option value="{{$subcategories->id}}">{{$subcategories->title}}</option>
+                        <option value="{{$subcategories->id}}">{{$subcategories->title}}</option>
 
-                    @endforeach     
+                        @endforeach     
 
-                    @endforeach
+                        @endforeach
 
-                </optgroup>
+                    </optgroup>
 
-            </select></div> 
+                </select></div> 
             {{ Form::hidden('category_id',null, array('class' => 'invisibleId')) }}
             {{ Form::hidden('subcategory_id',null, array('class' => 'invisibleSubcategoryId')) }}
             {{Form::label('year','Year:')}}
             {{Form::text('year',null,array('class' => 'form-control'))}}
             {{Form::label('dimension','Dimension:')}}
             {{Form::text('dimension',null,array('class' => 'form-control'))}}
-
+            {{Form::label('img','Upload Image:',['class' => 'labelColor'])}}
+            {{Form::file('img',array('class' => 'labelColor'))}}
             <!--This should appear if the page is a Simple Page (option 2 in the select box)-->
 
 

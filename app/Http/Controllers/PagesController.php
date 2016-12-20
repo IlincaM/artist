@@ -13,7 +13,7 @@ use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CreatePageRequest;
-
+use Intervention\Image\Facades\Image;
 class PagesController extends Controller {
 
     /**
@@ -135,7 +135,7 @@ class PagesController extends Controller {
                             ->withErrors($validator);
         } else {
             // store
-            $page = new Pages();
+            $page = new Pages;
             $page->title = Input::get('title');
             $page->slug = Input::get('slug');
             $page->type_id = Input::get('type_id');
@@ -184,5 +184,6 @@ class PagesController extends Controller {
             return redirect()->route('admin.show', $page->slug);
         }
     }
+    
 
 }

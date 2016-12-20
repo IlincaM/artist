@@ -53,22 +53,22 @@
     }
     });
     var Delete = function(id, page)
-            {
-            // ALERT JQUERY
-            $.alertable.confirm('Are you sure you want to delete ' + page + ' ?').then(function() {
-            var route = "{{url('panel/Pages/all')}}/" + id + "#";
-            var token = $("#token").val();
-            $.ajax({
-            url: route,
-                    headers: {'X-CSRF-TOKEN': token},
-                    type: 'post',
-                    dataType: 'json',
-                    success:$(".item" + id).remove()
+    {
+    // ALERT JQUERY
+    $.alertable.confirm('Are you sure you want to delete ' + page + ' ?').then(function() {
+    var route = "{{url('panel/Pages/all')}}/" + id + "#";
+    var token = $("#token").val();
+    $.ajax({
+    url: route,
+            headers: {'X-CSRF-TOKEN': token},
+            type: 'post',
+            dataType: 'json',
+            success:$(".item" + id).remove()
 
 
-            });
-            });
-            };
+    });
+    });
+    };
 
 
 

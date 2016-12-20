@@ -29,6 +29,7 @@
                 </div>
                 <div class="col-sm-6">
                     {{Form::submit('Save Changes',['class' =>'btn btn-success btn-block'])}}
+                    
 
 
                 </div>
